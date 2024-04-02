@@ -6,11 +6,13 @@ import (
 	"math"
 )
 
-func main() {
-	investAmount := 1000
-	expectReturnRate := 5.5
-	yars := 10
-	futureValue := float64(investAmount) * math.Pow(1+expectReturnRate/100, float64(yars))
+const inflation = 2.5
 
-	fmt.Printf("%.2f", futureValue)
+func main() {
+	investAmount := 1000.0
+	expectReturnRate := 5.5
+	yars := 10.0
+	futureValue := investAmount * math.Pow(1+expectReturnRate/100, yars)
+	realInvest := futureValue / math.Pow(1+inflation/100, yars)
+	fmt.Printf("Реальный доход с инвестиций = %.2f", realInvest)
 }
